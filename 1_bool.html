@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="chb" type="checkbox" checked>同意<br/>
+  用户名: <input id="txt" readonly><br/>
+  <button id="btn" disabled>提交</button><br/>
+  <select>
+    <option>未付款</option>
+    <option selected>已付款</option>
+    <option>已发货</option>
+    <option>已签收</option>
+  </select>
+  <script>
+    var chb=document.getElementById("chb");
+    //想用程序取消选中checkbox
+    //错误: 
+    // chb.setAttribute("checked",false);
+    //正确:
+    chb.checked=false;
+
+    var txt=document.getElementById("txt");
+    //错误: 
+    //txt.setAttribute("readonly",false);
+    //错误: 
+    // txt.readonly=false;
+    //正确: 
+    txt.readOnly=false;
+    
+    var btn=document.getElementById("btn");
+    //想让button启用
+    //错误: 
+    btn.setAttribute("disabled",false);
+    //正确: 
+    btn.disabled=false;
+
+  </script>
+</body>
+</html>

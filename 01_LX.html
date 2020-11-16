@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input id="chb" type="checkbox" checked>同意<br/>
+    用户名: <input readonly><br/>
+    <button id="btn" disabled>提交</button><br/>
+    <select>
+      <option>未付款</option>
+      <option selected>已付款</option>
+      <option>已发货</option>
+      <option>已签收</option>
+    </select>
+    <script>
+        var chb=document.getElementById("chb")
+        chb.chrcked=false;
+        var txt=document.getElementById("txt");
+        txt.readOnly=false;
+        var btn=document.getElementById("btn");
+        // btn.setAttribute("disabled",false);
+        btn.disabled=false;
+    </script> -->
+    <!-- ================================ -->
+    <!-- <h2>管理员列表</h2>
+	<table border="1px" width="500px">
+		<thead>
+			<tr>
+				<th><input type="checkbox" />全选</th>
+				<th>管理员ID</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" /></td>
+				<td>1</td>
+				<td>Tester</td>
+				<td>修改 删除</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" /></td>
+				<td>2</td>
+				<td>Manager</td>
+				<td>修改 删除</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" /></td>
+				<td>3</td>
+				<td>Analyst</td>
+				<td>修改 删除</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" /></td>
+				<td>4</td>
+				<td>Admin</td>
+				<td>修改 删除</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		var chbAll=document.querySelector(
+            "table>thead>tr>th:first-child>input"
+        );
+        console.log(chbAll)
+        chbAll.onclick=function(){
+            var inputs=document.querySelectorAll(
+                "tbody>tr>td:first-child>input"
+            );
+            console.log(inputs);
+            for(var input of inputs){
+                input.checked=this.checked;
+            }
+        }
+
+        var inputs=document.querySelectorAll(
+            "tbody>tr>td:first-child>input"
+        );
+        for(var input of inputs){
+            input.onclick=function(){
+                var chbAll=document.querySelector(
+                    "thead>tr>th:first-child>input"
+                );
+                var unchecked=document.querySelector("tbody>tr>td:first-child>input:not(:checked)"
+                );
+                if(unchecked!=null){
+                    chbAll.checked=false;
+                }else{
+                    chbAll.checked=true;
+            }
+        }
+     } 
+    </script>-->
+    <!-- ============================= -->
+    <button data-n="0">click me</button>
+    <script>
+        var btn=document.querySelector("[data-n]");
+        btn.onclick=function(){
+            var n=parseInt(
+                btn.getAttribute("data-n");
+                n++;
+                btn.setAttribute("data-n",n)
+        }
+
+    </script>
+</body>
+</html>

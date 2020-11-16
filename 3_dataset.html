@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button data-n="0">click me</button>
+  <script>
+    //复习第二阶段属性选择器
+    //选择带有data-n属性的元素
+    var btn=
+      document.querySelector("[data-n]");
+    btn.onclick=function(){
+      //获得按钮上data-n现在的属性值，转为整数
+      var n=parseInt(
+        //btn.getAttribute("data-n")
+        btn.dataset.n
+      );
+      n++;
+      //再将n放回data-n属性中
+      //btn.setAttribute("data-n",n);
+      btn.dataset.n=n;
+    }
+  </script>
+</body>
+</html>

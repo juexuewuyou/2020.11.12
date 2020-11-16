@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a=document.createElement("a");
+    a.href="http://tmooc.cn";
+    a.innerHTML="go to tmooc";
+    console.log(a);
+    document.body.appendChild(a);
+
+    //再添加一个文本框
+    var input=document.createElement("input")
+    //<input/>
+    //将input追加到body结尾a之后
+    //document.body.appendChild(input);
+    //希望文本框出现在a之前
+    // document.body.insertBefore(input,a);
+    //希望用文本框代替a
+    document.body.replaceChild(input,a);
+  </script>
+</body>
+</html>

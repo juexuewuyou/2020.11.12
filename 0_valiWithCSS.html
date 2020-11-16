@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>实现带样式的表单验证</title>
+	<style>
+		table {
+			width: 700px
+		}
+
+		td:first-child {
+			width: 60px
+		}
+
+		td:nth-child(2) {
+			width: 200px
+		}
+
+		td:first-child+td {
+			width: 200px
+		}
+
+		td span {
+			color: red
+		}
+
+		.vali_info {
+			display: none;
+		}
+
+		.txt_focus {
+			border-top: 2px solid black;
+			border-left: 2px solid black;
+		}
+
+		.vali_success,
+		.vali_fail {
+			background-repeat: no-repeat;
+			background-position: left center;
+			display: block;
+		}
+
+		.vali_success {
+			background-image: url("../images/ok.png");
+			padding-left: 20px;
+			width: 0px;
+			height: 20px;
+			overflow: hidden;
+		}
+
+		.vali_fail {
+			background-image: url("../images/err.png");
+			border: 1px solid red;
+			background-color: #ddd;
+			color: Red;
+			padding-left: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<form id="form1">
+		<h2>增加管理员</h2>
+		<table>
+			<tr>
+				<td>姓名：</td>
+				<td>
+					<input name="username" />
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">
+						10个字符以内的字母、数字或下划线的组合
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td>
+					<input type="password" name="pwd" />
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">6位数字</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="2">
+					<input type="submit" value="保存" />
+					<input type="reset" value="重填" />
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script>
+		//只完成用户名的格式验证
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 当name为username的文本框失去焦点时触发验证
+		var input=document.getElementsByName("username")[0];//将找到的唯一的一个元素对象，从类数组对象的0位置取出来
+		//2. 绑定事件处理函数
+		input.onblur=function(){
+			//this->当前input文本框
+			//3. 查找要修改的元素
+			//本例中: 无论验证成功还是失败，修改的都是当前文本框的爹的下一个兄弟的第一个孩子
+			var div=
+				this.parentElement
+			//input      td
+						.nextElementSibling
+						//  下一个td
+						.children[0];
+						//  下一个td下第一个孩子div
+			//4. 修改元素
+			//4.1 定义正则表达式
+			var reg=/^\w{1,10}$/;//复习jscore day02
+			//4.2 用正则reg验证当前文本框的内容
+			var result=reg.test(this.value);
+			//4.3 根据验证结果修改旁边div的class
+			//如果验证姓名的格式通过
+			if(result==true){
+				//将div的class改为vali_success
+				div.className="vali_success";
+			}else{//否则如果验证姓名的格式不通过
+				//将div的class改为vali_fail
+				div.className="vali_fail";
+			}
+		}
+
+
+		//密码验证作为作业完成
+		var input1=document.getElementsByName("pwd")[0];
+		input1.onblur=function(){
+			var div=
+				this.parentElement
+				.nextElementSibling
+						//  下一个td
+						.children[0];
+						//  下一个td下第一个孩子div
+			//4. 修改元素
+			//4.1 定义正则表达式
+			var reg=/^\w{1,10}$/;//复习jscore day02
+			//4.2 用正则reg验证当前文本框的内容
+			var result=reg.test(this.value);
+			//4.3 根据验证结果修改旁边div的class
+			//如果验证姓名的格式通过
+			if(result==true){
+				//将div的class改为vali_success
+				div.className="vali_success";
+			}else{//否则如果验证姓名的格式不通过
+				//将div的class改为vali_fail
+				div.className="vali_fail";
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1{
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="h1" style="color:yellow">Welcome</h1>
+  <script>
+    var h1=document.getElementById("h1");
+    //想获得h1的字体颜色、背景颜色、字体大小
+    //错误: 只能获得少的可怜的内联样式
+    // console.log(
+    //   h1.style.color,
+    //   h1.style.backgroundColor,
+    //   h1.style.fontSize
+    // );
+    //正确: 
+    var style=getComputedStyle(h1);
+    console.log(style);
+    console.log(
+      style.color,
+      style.backgroundColor,
+      style.fontSize
+    );
+    //想顺便把字体大小改为64px
+    //错误: 
+    //style.fontSize="64px";//Uncaught DOMException: Failed to set the 'font-size' property on 'CSSStyleDeclaration': These styles are computed, and therefore the 'font-size' property is read-only.
+  </script>
+</body>
+</html>
